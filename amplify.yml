@@ -14,3 +14,11 @@ frontend:
     cache:
         paths:
             - node_modules/**/*
+    postBuild:
+        commands:
+            - npm run test-ci
+    preBuild:
+        commands:
+            - npm install
+            - wget --no-verbose https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+            - yum -y -q install google-chrome-stable_current_x86_64.rpm
